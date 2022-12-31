@@ -11,6 +11,8 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 
 import { AppModule } from './app.module'
 
+import { setupDocument } from './docs'
+
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
@@ -28,6 +30,9 @@ async function bootstrap() {
 
   // 全局拦截异常
   app.useGlobalFilters(new AllExceptionFilter(), new HttpExceptionFilter())
+
+  // Swagger 文档
+  setupDocument(app)
 
   await app.listen(3000)
 }
