@@ -8,7 +8,7 @@ import {
   Post,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { BusinessException } from 'src/common/exceptions/business.exception'
+import { BusinessException } from '../common/exceptions/business.exception'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UserService } from './user.service'
