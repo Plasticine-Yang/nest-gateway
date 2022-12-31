@@ -1,4 +1,4 @@
-import { VersioningType } from '@nestjs/common'
+import { ValidationPipe, VersioningType } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import {
   FastifyAdapter,
@@ -30,6 +30,9 @@ async function bootstrap() {
 
   // 全局拦截异常
   app.useGlobalFilters(new AllExceptionFilter(), new HttpExceptionFilter())
+
+  // 全局字段校验
+  app.useGlobalPipes(new ValidationPipe())
 
   // Swagger 文档
   setupDocument(app)
